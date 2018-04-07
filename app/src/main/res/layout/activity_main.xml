@@ -9,6 +9,8 @@
 
     <EditText
         android:id="@+id/edit_ip"
+        android:background="@drawable/shape"
+        android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -30,13 +32,16 @@
 
     <EditText
         android:id="@+id/edit_mask"
+        android:background="@drawable/shape"
+        android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textAlignment="center"
         android:inputType="number"
         android:maxLength="2"
-        android:hint="Máscara" />
+        android:hint="Máscara"
+        />
 
     <Button
         android:id="@+id/btn_calcular"
@@ -53,55 +58,109 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/text_netmask"/>
+        android:text="@string/text_netmask"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/netID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_netmask"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_network"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_network"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_netmask"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/netID"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_network"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/text_network"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/text_broadcast"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_broadcast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_network"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/broadcast"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/cantidadHosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_broadcast"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/text_broadcast"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/cantidad_hosts"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_hosts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_broadcast"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/cantidadHosts"
+        android:layout_marginTop="1dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Hosts: "/>
+        android:layout_marginStart="8dp" />
+
+
+    <TextView
+        android:id="@+id/parteDeRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cantidadHosts"
+        android:layout_alignBottom="@+id/cantidadHosts"
+        android:layout_alignEnd="@+id/edit_ip"
+        android:layout_alignRight="@+id/edit_ip"
+        android:layout_below="@id/text_broadcast"
+        android:text="@string/netpart"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_netpart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/text_hosts"
+        android:layout_alignBottom="@+id/text_hosts"
+        android:layout_alignStart="@+id/parteDeRed"
+        android:layout_alignLeft="@+id/parteDeRed" />
+
+    <TextView
+        android:id="@+id/parteDeHost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/text_hosts"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/netpart"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/hostpart"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/text_hostpart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_netpart"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/parteDeHost"
+        android:layout_marginTop="1dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/hostpart"/>
+        android:layout_marginStart="8dp" />
 
 </RelativeLayout>
