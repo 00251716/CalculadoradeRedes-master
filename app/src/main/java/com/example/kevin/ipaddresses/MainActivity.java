@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Se infla el layout
         setContentView(R.layout.activity_main);
+        //Se obtienen referencias a todos los objetos ya creados en el heap
         edit_ip = findViewById(R.id.edit_ip);
         edit_mask = findViewById(R.id.edit_mask);
         btn_calcular = findViewById(R.id.btn_calcular);
@@ -77,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
     void getNetMask() {
         String temp = edit_mask.getText().toString().trim();
+
+        //Antes de calcular la máscara, se hacen las validaciones necesarias
+
         if (temp.isEmpty())
             throw new IllegalArgumentException("Campo de máscara vacío");
         else if (Integer.parseInt(temp) < 1 || Integer.parseInt(temp) > 32)
@@ -87,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
             mask[1] = prefix >> 16 & 0xff;
             mask[2] = prefix >> 8 & 0xff;
             mask[3] = prefix & 0xff;
+
+            //Ahora vamos a calcular la wildcard mask, que es exactamente el reverso, bit por bit, de la máscara
+
             wildcard[0] = (~mask[0] << 24) >>> 24;
             wildcard[1] = (~mask[1] << 24) >>> 24;
             wildcard[2] = (~mask[2] << 24) >>> 24;
@@ -95,12 +103,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //La parte del host se obtiene haciendo un bitwise-AND entre la negación bit por bit de la máscara y la dirección
     void getHostPart() {
         host =  (~mask[0] & mip[0]) + "." + (mip[1] & ~mask[1]) + "." + (mip[2] & ~mask[2])
                 + "." + (mip[3] & ~mask[3]);
         text_hostpart.setText("Host part:"+" "+host);
     }
 
+    //La parte de la red se obtiene haciendo un bitwise-AND entre la máscara y la dirección de la IP
     void getNetwork() {
         network = (mask[0] & mip[0]) + "." + (mip[1] & mask[1]) + "." + (mip[2] & mask[2])
                 + "." + (mip[3] & mask[3]);
@@ -108,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         text_netpart.setText("Red:"+" "+ network);
     }
 
+    //El broadcast se obtiene con un bitwise-OR entre la IP y el reverso de la máscara, que es la wildcard mask y ya calculamos
     void getBroadcast() {
         broadcast = (wildcard[0] | mip[0]) + "." + (mip[1] | wildcard[1]) + "." + (mip[2] | wildcard[2])
                 + "." + (mip[3] | wildcard[3]);
