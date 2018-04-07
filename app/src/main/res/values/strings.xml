@@ -6,4 +6,7 @@
     <string name="cantidad_hosts">Cantidad de hosts</string>
     <string name="netpart">Parte de red</string>
     <string name="hostpart">Parte de host</string>
+    <string name="calcular">Calcular</string>
+    <string name="mask_hint">Máscara</string>
+    <string name="ip_hint">Ingrese la dirección IP</string>
 </resources>

@@ -19,7 +19,7 @@
         android:digits="0123456789."
         android:maxLength="15"
         android:inputType="phone"
-        android:hint="Ingrese la dirección IP" />
+        android:hint="@string/ip_hint" />
 
     <TextView
         android:id="@+id/text_slash"
@@ -40,7 +40,7 @@
         android:textAlignment="center"
         android:inputType="number"
         android:maxLength="2"
-        android:hint="Máscara"
+        android:hint="@string/mask_hint"
         />
 
     <Button
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edit_ip"
-        android:text="Calcular"/>
+        android:text="@string/calcular"/>
 
     <TextView
         android:id="@+id/text_netmask"
