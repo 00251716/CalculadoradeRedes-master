@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     int wildcard[] = new int[4];
     int mip[] = new int[4];
 
+    //regex para direcciones IP
     private final String IP_ADDRESS_PATTERN =
             "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\." +
                     "(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\." +
